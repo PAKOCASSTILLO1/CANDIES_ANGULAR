@@ -1,0 +1,37 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-content>
+      <!-- formGroup al que responde y funcion q ejecuta al dar submit -->
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+        <div class="login-control-input">
+          <mat-form-field class="login-form-field">
+            <input matInput placeholder="Username" aria-label="username" formControlName="username">
+            <!-- Criterios de aceptacion -->
+            <mat-error *ngIf="loginForm.get('username').hasError('required')">Username es requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="login-control-input">
+          <mat-form-field class="login-form-field">
+            <input matInput placeholder="Password" type="password" aria-label="passwaord" formControlName="password">
+            <!-- Criterios de aceptacion -->
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">Password es requerido</mat-error>
+            <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Ingresa 4 caracteres minimo</mat-error>
+            <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">No debe ser mayor a 20 caracteres</mat-error>
+
+          </mat-form-field>
+        </div>
+        <br />
+
+        <!-- Si hay algun error, muestrelo -->
+        <div ngif="loginError">
+          <p class="login-error"> {{loginError}} </p>
+        </div>
+        <div>
+          <!-- desabilitar el boton hasta q los input sean correctos -->
+          <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

@@ -1,0 +1,25 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-content>
+          <form class="login-form" [formGroup]="loginForm" (ngSubit)="login(loginForm)">
+            <div class="login-control-input">
+              <mat-form-field class="login-form-field">
+                <input matInput placeholder="Username" aria-label="username" formControlName="username">
+              </mat-form-field>
+            </div>
+            <div class="login-control-input">
+              <mat-form-field class="login-form-field">
+                <input matInput placeholder="Password" aria-label="passwaord" formControlName="password">
+              </mat-form-field>
+            </div>
+            <br />
+
+            <div>
+              <!-- <button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button> -->
+              <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
+            </div>
+          </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
